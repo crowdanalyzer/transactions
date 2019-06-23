@@ -1,0 +1,15 @@
+version: '3'
+services:
+  node:
+    tty: true
+    stdin_open: true
+    container_name: <REPOSITORY_NAME>
+    env_file:
+      - ./.env
+    build:
+      context: .
+      args:
+        - NPM_TOKEN
+    volumes:
+      - .:/var/code:rw
+    entrypoint: './startup.sh'

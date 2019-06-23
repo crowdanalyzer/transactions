@@ -1,0 +1,5 @@
+FROM node:12.4.0
+ARG NPM_TOKEN
+ENV NPM_TOKEN $NPM_TOKEN
+WORKDIR /var/code/
+ENTRYPOINT ./startup.sh

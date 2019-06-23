@@ -1,0 +1,36 @@
+{
+  "name": "@crowdanalyzer/<REPOSITORY_NAME>",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "author": "CrowdAnalyzer <dev@crowdanalyzer.com>",
+  "description": "<REPOSITORY_DESCRIPTION>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crowdanalyzer/<REPOSITORY_NAME>.git"
+  },
+  "engine": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "contributors": [],
+  "main": "./index.js",
+  "scripts": {
+    "docker": "docker-compose build && docker-compose run node",
+    "test": "mocha ./test/ --recursive --timeout=60000 --exit",
+    "coverage": "nyc mocha ./test/ --recursive --timeout=60000 --exit",
+    "lint": "eslint ./src/ ./test/ ./index.js",
+    "depcheck": "npm-check"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-crowdanalyzer": "^1.4.1",
+    "mocha": "^6.1.4",
+    "npm-check": "^5.9.0",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
