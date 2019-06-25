@@ -17,7 +17,7 @@ module.export = (config, eventEmitter) => {
                 const retryDoing = retry(step.do.func, config.retry_strategy, retryConfig);
                 const result = await retryDoing(...params);
                 stepsResult[step.id] = result;
-                compensations.push(step.undo);
+                compensations.unshift(step.undo);
             } catch(error) {
                 // stop transaction and try executing compensations if any step failed
                 eventEmitter.publish(error);
