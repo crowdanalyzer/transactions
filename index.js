@@ -1,4 +1,3 @@
 'use strict';
 
-// TODO: Export your library
-module.exports = {};
+module.exports = require('./src/executer');

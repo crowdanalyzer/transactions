@@ -3,7 +3,7 @@ services:
   node:
     tty: true
     stdin_open: true
-    container_name: <REPOSITORY_NAME>
+    container_name: transactions
     env_file:
       - ./.env
     build:

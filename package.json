@@ -1,18 +1,23 @@
 {
-  "name": "@crowdanalyzer/<REPOSITORY_NAME>",
-  "version": "0.1.0",
+  "name": "@crowdanalyzer/transactions",
+  "version": "1.0.0",
   "license": "UNLICENSED",
   "author": "CrowdAnalyzer <dev@crowdanalyzer.com>",
   "description": "<REPOSITORY_DESCRIPTION>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/crowdanalyzer/<REPOSITORY_NAME>.git"
+    "url": "https://github.com/crowdanalyzer/transactions.git"
   },
   "engine": {
     "node": ">=12.0.0",
     "npm": ">=6.0.0"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Mohamed Ashour <mohamed-ashour>",
+      "email": "mohamed.ashour@crowdanalyzer.com"
+    }
+  ],
   "main": "./index.js",
   "scripts": {
     "docker": "docker-compose build && docker-compose run node",
@@ -31,6 +36,7 @@
     "nyc": "^14.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "@crowdanalyzer/retry": "^1.1.0"
   }
 }
