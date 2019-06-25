@@ -13,7 +13,7 @@ module.export = (config, eventEmitter) => {
         for(const step of transaction) {
             try {
                 // try executing each step
-                const params = map(step.params, stepsResult, config.var_prefix);
+                const params = map(step.params, stepsResult, config.reference_prefix);
                 const retryDoing = retry(step.do.func, config.retry_strategy, retryConfig);
                 const result = await retryDoing(...params);
                 stepsResult[step.id] = result;
@@ -32,7 +32,7 @@ module.export = (config, eventEmitter) => {
     const executeCompensations = async(compensations, stepsResult) => {
         for(const compensation of compensations) {
             try {
-                const params = map(compensation.params, stepsResult, config.var_prefix);
+                const params = map(compensation.params, stepsResult, config.reference_prefix);
                 const retryUndoing = retry(compensation.func, config.retry_strategy, retryConfig);
                 await retryUndoing(...params);
             } catch(error) {
