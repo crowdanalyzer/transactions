@@ -23,6 +23,11 @@ const map = (params = [], data) =>
     });
 
 module.exports = (logger = console) => {
+    /**
+     * @description execute tasks sequentially and if any of them failed
+     * it will execute executed tasks compensations
+     * @param {Array} transaction
+     */
     const execute = async transaction => {
         const stepsResult = {};
         const compensations = [];

@@ -20,7 +20,7 @@ describe('executer', () => {
             execute = executer(logger);
         });
 
-        it('should accept logger and execute transaction and return tasks result', async() => {
+        it('should accept logger, execute transaction, and return tasks result', async() => {
             const actionSpy1 = sinon.spy(transaction[0].do, 'func');
             const actionSpy2 = sinon.spy(transaction[1].do, 'func');
             const actionSpy3 = sinon.spy(transaction[2].do, 'func');
@@ -115,7 +115,7 @@ describe('executer', () => {
 
         it(
             'should log any error occur while executing compensation ' +
-                'along with compensation step id',
+                'along with compensation step id and action',
             async() => {
                 const stepError = new Error('step failed');
                 const compensationError = new Error('compensation failed');
