@@ -3,51 +3,54 @@
 module.exports = [
     {
         id: 't1',
+        name: 'Create user',
         do: {
-            function: () => {},
+            func: user => 
+                Promise.resolve(Object.assign(user, { _id: '873627854326' })),
             params: [
                 {
-                    email: 'dev@crowdanalyzer.com',
-                    name: 'Dev Account',
+                    email: 'john.doe@crowdanalyzer.com',
+                    name: 'John Doe',
                 },
             ],
         },
         undo: {
-            function: () => {},
-            params: ['$t1.customer_id'],
+            func: userId => 
+                Promise.resolve(`User with id (${userId}) was removed`),
+            params: ['$t1._id'],
         },
     },
     {
         id: 't2',
+        name: 'Charge user',
         do: {
-            function: () => {},
-            params: ['$t1'],
+            func: (userName, userId, amount) =>
+                Promise.resolve(`User ${userName} with id (${userId}) was charged ${amount}$`),
+
+            params: ['$t1.name', '$t1._id', 100],
         },
         undo: {
-            function: () => {},
-            params: ['$t1'],
+            func: (userName, userId, amount) =>
+                Promise.resolve(`User ${userName} with id (${userId}) was refunded ${amount}$`),
+
+            params: ['$t1.name', '$t1._id', 100],
         },
     },
     {
         id: 't3',
+        name: 'Sent notification to user',
         do: {
-            function: () => {},
-            params: ['$t2._id'],
+            func: () =>
+                Promise.resolve(`Email was sent to the user notifying him with the transaction`),
         },
     },
     {
         id: 't4',
+        name: 'Save transaction',
         do: {
-            function: () => {},
-            params: [
-                {
-                    customer_id: '$t1.customer_id',
-                },
-            ],
-        },
-        undo: {
-            function: () => {},
-            params: ['$t4.subscription_id'],
+            func: chargingResponse => 
+                Promise.resolve(`Saved transaction: ${chargingResponse}`),
+            params: ['$t2'],
         },
     },
 ];

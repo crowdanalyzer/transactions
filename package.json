@@ -31,12 +31,12 @@
     "chai-as-promised": "^7.1.1",
     "eslint": "^6.0.1",
     "eslint-config-crowdanalyzer": "^1.4.1",
+    "lodash": "^4.17.11",
     "mocha": "^6.1.4",
     "npm-check": "^5.9.0",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0"
   },
-  "dependencies": {
-    "lodash": "^4.17.11",
-    "@crowdanalyzer/retry": "^1.1.0"
-  }
+  "dependencies": {}
 }

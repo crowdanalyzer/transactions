@@ -1,26 +1,43 @@
 'use strict';
 
-const _ = require('lodash');
-const retry = require('@crowdanalyzer/retry');
-const map = require('./Utilities/map');
+const REFERENCE_PREFIX = '$';
 
-module.export = (config, eventEmitter) => {
-    const retryConfig = _.pick(config, ['max_retries', 'initial_delay', 'ceiling_timeout']);
+const get = (obj, path) =>
+    String.prototype.split
+        .call(path, /[,[\].]+?/)
+        .filter(Boolean)
+        .reduce(
+            (last, part) =>
+                'object' === typeof last && last.hasOwnProperty(part) ? last[part] : undefined,
+            obj
+        );
 
+const map = (params = [], data) =>
+    params.map(param => {
+        if('string' === typeof param && param[0] === REFERENCE_PREFIX) {
+            const path = param.slice(1);
+            return get(data, path) || param;
+        }
+
+        return param;
+    });
+
+module.exports = (logger = console) => {
     const execute = async transaction => {
         const stepsResult = {};
         const compensations = [];
         for(const step of transaction) {
             try {
-                // try executing each step
-                const params = map(step.params, stepsResult, config.reference_prefix);
-                const retryDoing = retry(step.do.func, config.retry_strategy, retryConfig);
-                const result = await retryDoing(...params);
-                stepsResult[step.id] = result;
-                compensations.unshift(step.undo);
+                // executing each step
+                const params = map(step.do.params, stepsResult);
+                stepsResult[step.id] = await step.do.func(...params);
+                if('object' === typeof step.undo) {
+                    compensations.unshift(step);
+                }
             } catch(error) {
-                // stop transaction and try executing compensations if any step failed
-                eventEmitter.publish(error);
+                // stop transaction and execute compensations if any step failed
+                Object.assign(error, { step_id: step.id, action: 'do' });
+                logger.error(error);
                 await executeCompensations(compensations, stepsResult);
                 break;
             }
@@ -32,11 +49,13 @@ module.export = (config, eventEmitter) => {
     const executeCompensations = async(compensations, stepsResult) => {
         for(const compensation of compensations) {
             try {
-                const params = map(compensation.params, stepsResult, config.reference_prefix);
-                const retryUndoing = retry(compensation.func, config.retry_strategy, retryConfig);
-                await retryUndoing(...params);
+                const params = map(compensation.undo.params, stepsResult);
+                const result = await compensation.undo.func(...params);
+                stepsResult[`${compensation.id}_compensation`] = result;
             } catch(error) {
-                eventEmitter.publish(error);
+                Object.assign(error, { step_id: compensations.id, action: 'undo' });
+                error.step_id = compensation.id;
+                logger.error(error);
             }
         }
     };
