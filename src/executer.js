@@ -14,7 +14,7 @@ const get = (obj, path) =>
 
 const map = (params = [], data) =>
     params.map(param => {
-        if('string' === typeof param && param[0] === REFERENCE_PREFIX) {
+        if ('string' === typeof param && REFERENCE_PREFIX === param[0]) {
             const path = param.slice(1);
             return get(data, path) || param;
         }

@@ -3,7 +3,7 @@
 const sinon = require('sinon');
 const expect = require('./Helpers/expect');
 const executer = require('../index');
-const transactionSample = require('./Helpers/Examples/transaction');
+const transactionSample = require('./Examples/transaction');
 const _ = require('lodash');
 
 describe('executer', () => {
