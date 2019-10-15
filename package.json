@@ -16,6 +16,10 @@
     {
       "name": "Mohamed Ashour <mohamed-ashour>",
       "email": "mohamed.ashour@crowdanalyzer.com"
+    },
+    {
+      "name": "Abdelrahman Elkady <abdelrahman-elkady>",
+      "email": "abdelrahman.elkady@crowdanalyzer.com"
     }
   ],
   "main": "./index.js",
