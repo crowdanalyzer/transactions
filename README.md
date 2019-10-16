@@ -192,6 +192,8 @@ const run = async() => {
 run().then(console.log);
 
 /** Output:
+ *
+ * // Error
  * {
  *   Error: Something went wrong !
  *   <stack>
@@ -201,6 +203,7 @@ run().then(console.log);
  *    action: 'do'
  *  }
  *
+ * // Results, including compensation step
  * {
  *     task__create_user: {
  *         email: 'john.doe@crowdanalyzer.com',
