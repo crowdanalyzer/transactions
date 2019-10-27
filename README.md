@@ -1,4 +1,4 @@
-<h1 align="center">Transactions</h1>
+<h1 align="center">Transactions Processing Library</h1>
 <p align="center">
    <a href="https://circleci.com/gh/crowdanalyzer/transactions/tree/master">
         <img alt="CircleCI" src="https://circleci.com/gh/crowdanalyzer/transactions/tree/master.svg?style=shield&circle-token=79d3b9ba3c54691eb05b833d9cc63e151bd77cc8">
@@ -14,6 +14,7 @@
     </a>
 </p>
 
+# Installation
 ```
 npm i @crowdanalyzer/transactions
 ```

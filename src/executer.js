@@ -44,7 +44,7 @@ module.exports = (logger = console) => {
                 Object.assign(error, { step_id: step.id, action: 'do' });
                 logger.error(error);
                 await executeCompensations(compensations, stepsResult);
-                break;
+                throw error;
             }
         }
 

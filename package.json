@@ -20,6 +20,10 @@
     {
       "name": "Abdelrahman Elkady <abdelrahman-elkady>",
       "email": "abdelrahman.elkady@crowdanalyzer.com"
+    },
+    {
+      "name": "Omar Safwany <omarsafwany>",
+      "email": "omar.safwany@crowdanalyzer.com"
     }
   ],
   "main": "./index.js",
