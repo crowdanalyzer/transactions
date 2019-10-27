@@ -44,12 +44,12 @@ describe('executer', () => {
                 sinon.match({
                     email: 'john.doe@crowdanalyzer.com',
                     name: 'John Doe',
-                })
+                }),
             );
             expect(actionSpy2).to.have.been.calledOnceWithExactly('John Doe', '873627854326', 100);
             expect(actionSpy3).to.have.been.calledOnceWithExactly();
             expect(actionSpy4).to.have.been.calledOnceWithExactly(
-                'User John Doe with id (873627854326) was charged 100$'
+                'User John Doe with id (873627854326) was charged 100$',
             );
             expect(compensationSpy1).to.have.callCount(0);
             expect(compensationSpy2).to.have.callCount(0);
@@ -71,7 +71,7 @@ describe('executer', () => {
                 const compensationSpy1 = sinon.spy(transaction[0].undo, 'func');
                 const compensationSpy2 = sinon.spy(transaction[1].undo, 'func');
                 let result;
-                try{
+                try {
                     result = await execute(transaction);
                 } catch(error) {
                     expect(result).to.be.undefined;
@@ -83,20 +83,20 @@ describe('executer', () => {
                             sinon.match({
                                 email: 'john.doe@crowdanalyzer.com',
                                 name: 'John Doe',
-                            })
-                        )
+                            }),
+                        ),
                     );
                     expect(actionSpy2).to.have.been.calledOnceWithExactly(
                         'John Doe',
                         '873627854326',
-                        100
+                        100,
                     );
                     expect(actionSpy3).to.have.been.calledOnceWithExactly();
                     expect(actionSpy4).to.have.callCount(0);
                     expect(compensationSpy2).to.have.been.calledOnceWithExactly(
                         'John Doe',
                         '873627854326',
-                        100
+                        100,
                     );
                     expect(compensationSpy1.calledOnceWithExactly('873627854326'));
                     expect(actionSpy1).to.have.been.calledBefore(actionSpy2);
@@ -104,7 +104,7 @@ describe('executer', () => {
                     expect(actionSpy3).to.have.been.calledBefore(compensationSpy2);
                     expect(compensationSpy2).to.have.been.calledBefore(compensationSpy1);
                 }
-            }
+            },
         );
 
         it(
@@ -124,7 +124,7 @@ describe('executer', () => {
                 let result;
                 try {
                     result = await execute(transaction);
-                } catch (error) {
+                } catch(error) {
                     expect(result).to.be.undefined;
                     expect(logger.error).to.have.callCount(2);
                     expect(logger.error).to.have.been.calledWithExactly(stepError);
@@ -136,20 +136,20 @@ describe('executer', () => {
                             sinon.match({
                                 email: 'john.doe@crowdanalyzer.com',
                                 name: 'John Doe',
-                            })
-                        )
+                            }),
+                        ),
                     );
                     expect(actionSpy2).to.have.been.calledOnceWithExactly(
                         'John Doe',
                         '873627854326',
-                        100
+                        100,
                     );
                     expect(actionSpy3).to.have.been.calledOnceWithExactly();
                     expect(actionSpy4).to.have.callCount(0);
                     expect(compensationSpy2).to.have.been.calledOnceWithExactly(
                         'John Doe',
                         '873627854326',
-                        100
+                        100,
                     );
                     expect(compensationSpy1.calledOnceWithExactly('873627854326'));
                     expect(actionSpy1).to.have.been.calledBefore(actionSpy2);
@@ -157,7 +157,7 @@ describe('executer', () => {
                     expect(actionSpy3).to.have.been.calledBefore(compensationSpy2);
                     expect(compensationSpy2).to.have.been.calledBefore(compensationSpy1);   
                 }
-            }
+            },
         );
 
         it('should default `logger` to `console`', async() => {
@@ -179,7 +179,7 @@ describe('executer', () => {
             expect(actionSpy).to.have.been.calledOnceWithExactly(
                 '$t1.invalid_path',
                 '873627854326',
-                200
+                200,
             );
         });
     });

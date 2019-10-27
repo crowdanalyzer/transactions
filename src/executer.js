@@ -9,7 +9,7 @@ const get = (obj, path) =>
         .reduce(
             (last, part) =>
                 'object' === typeof last && last.hasOwnProperty(part) ? last[part] : undefined,
-            obj
+            obj,
         );
 
 const map = (params = [], data) =>
