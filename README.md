@@ -1,16 +1,19 @@
 <h1 align="center">Transactions</h1>
-
 <p align="center">
-  Transactions processing library
+   <a href="https://circleci.com/gh/crowdanalyzer/transactions/tree/master">
+        <img alt="CircleCI" src="https://circleci.com/gh/crowdanalyzer/transactions/tree/master.svg?style=shield&circle-token=79d3b9ba3c54691eb05b833d9cc63e151bd77cc8">
+    </a>
+   <a href="https://dependabot.com">
+        <img alt="Dependabot" src="https://img.shields.io/badge/dependabot-config%20required-red">
+    </a>
+   <a href="https://github.com/semantic-release/semantic-release">
+        <img alt="semantic release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+    </a>
+   <a href="https://www.npmjs.com/package/@crowdanalyzer/transactions">
+        <img alt="npm" src="https://img.shields.io/badge/npm-latest-blue">
+    </a>
 </p>
 
-<p align="center">
-  <a href="https://circleci.com/gh/crowdanalyzer/transactions/tree/master">
-    <img alt="CircleCI" src="https://circleci.com/gh/crowdanalyzer/transactions/tree/master.svg?style=shield&circle-token=79d3b9ba3c54691eb05b833d9cc63e151bd77cc8">
-  </a>
-</p>
-
-# Installation
 ```
 npm i @crowdanalyzer/transactions
 ```

@@ -1,6 +1,8 @@
-version: '3'
+version: '2.4'
 services:
   node:
+    ports:
+      - '30260:9229'
     tty: true
     stdin_open: true
     container_name: transactions
@@ -10,6 +12,7 @@ services:
       context: .
       args:
         - NPM_TOKEN
+    user: 'node:node'
     volumes:
-      - .:/var/code:rw
-    entrypoint: './startup.sh'
+      - '.:/home/node/app:rw'
+

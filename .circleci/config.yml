@@ -1,98 +1,49 @@
 version: 2
 references:
-  workdir: &workdir
-    /var/code
-
+  workdir: &workdir /var/code
   attach_workdir: &attach_workdir
     attach_workspace:
       at: *workdir
-
   images: &images
-    docker: 
-      - image: node:12.4.0
+    docker:
+      - image: 'node:12.4.0'
     working_directory: *workdir
-
 jobs:
-  setup:
+  checks:
     <<: *images
     steps:
       - checkout
       - run:
           name: Installing dependencies
           command: npm install
+      - run:
+          name: Running lint
+          command: npm run lint
+      - run:
+          name: Running coverage
+          command: npm run coverage
       - persist_to_workspace:
           root: *workdir
           paths:
             - ./*
-
-  test:
-    <<: *images
-    steps:
-      - *attach_workdir
-      - run:
-          name: Running tests
-          command: npm run test
-  
-  coverage:
-    <<: *images
-    steps:
-      - *attach_workdir
-      - run:
-          name: Running coverage
-          command: npm run coverage
-
-  lint:
-    <<: *images
-    steps:
-      - *attach_workdir
-      - run:
-          name: Running lint
-          command: npm run lint
-
-  depcheck:
-    <<: *images
-    steps:
-      - *attach_workdir
-      - run:
-          name: Checking unused and outdated packages
-          command: npm run depcheck
-
   publish:
     <<: *images
     steps:
       - *attach_workdir
       - run:
           name: Publishing to npmjs
-          command: npm publish
-
+          command: npx semantic-release
 workflows:
   version: 2
   test_and_publish:
     jobs:
-      - setup:
+      - checks:
           context: npm
-      - test:
-          context: npm 
-          requires:
-            - setup
-      - coverage:
-          context: npm
-          requires:
-            - test
-      - lint:
-          context: npm 
-          requires:
-            - setup
-      - depcheck:
-          context: npm 
-          requires:
-            - setup
       - publish:
-          context: npm
+          context: semantic-release
           requires:
-            - coverage
-            - lint
-            - depcheck
+            - checks
           filters:
-            branches: 
+            branches:
               only: master
+

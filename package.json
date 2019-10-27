@@ -24,23 +24,38 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "docker": "docker-compose build && docker-compose run node",
+    "docker-debug-image": "docker commit ${PWD##*/} ${PWD##*/}_debug && docker run -it --entrypoint sh ${PWD##*/}_debug",
+    "docker-shutdown": "docker-compose down --rmi local -v",
+    "docker": "docker-compose up -d --build && docker exec -it ${PWD##*/} bash",
+    "debugger": "nodemon --watch . --exec 'npm run test -- --inspect-brk=0.0.0.0:9229 || true'",
     "test": "mocha ./test/ --recursive --timeout=60000 --exit",
-    "coverage": "nyc mocha ./test/ --recursive --timeout=60000 --exit",
+    "coverage": "nyc npm run test",
     "lint": "eslint ./src/ ./test/ ./index.js",
-    "depcheck": "npm-check"
+    "depcheck": "npm-check --ignore semantic-release --ignore @semantic-release/*"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^6.5.1",
     "eslint-config-crowdanalyzer": "^1.4.1",
     "lodash": "^4.17.15",
     "mocha": "^6.2.1",
+    "nodemon": "^1.19.2",
     "npm-check": "^5.9.0",
     "nyc": "^14.1.1",
+    "semantic-release": "^15.13.24",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "crowdanalyzer": {
+    "template": {
+      "name": "library-template-v2.2"
+    },
+    "sia": {
+      "version": "0.4.1"
+    }
+  }
 }
