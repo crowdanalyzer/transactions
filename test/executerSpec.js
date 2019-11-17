@@ -74,16 +74,17 @@ describe('executer', () => {
                     .then(error => {
                         expect(logger.error).to.have.been.calledOnceWithExactly(error);
                         expect(error).to.be.instanceOf(Error).and.have.property('message')
-                                .that.equal('step failed');
+                            .that.equal('step failed');
                         expect(error.executionDetails).to.deep.equal({
                             t1: {
-                              email: 'john.doe@crowdanalyzer.com',
-                              name: 'John Doe',
-                              _id: '873627854326'
+                                email: 'john.doe@crowdanalyzer.com',
+                                name: 'John Doe',
+                                _id: '873627854326',
                             },
                             t2: 'User John Doe with id (873627854326) was charged 100$',
-                            t2_compensation: 'User John Doe with id (873627854326) was refunded 100$',
-                            t1_compensation: 'User with id (873627854326) was removed'
+                            t2_compensation: 'User John Doe with id (873627854326) was ' +
+                                'refunded 100$',
+                            t1_compensation: 'User with id (873627854326) was removed',
                         });
                         expect(error.step_id).to.be.equal('t3');
                         expect(error.action).to.be.equal('do');
@@ -137,12 +138,12 @@ describe('executer', () => {
                             .that.equal('step failed');
                         expect(error.executionDetails).to.deep.equal({
                             t1: {
-                              email: 'john.doe@crowdanalyzer.com',
-                              name: 'John Doe',
-                              _id: '873627854326'
+                                email: 'john.doe@crowdanalyzer.com',
+                                name: 'John Doe',
+                                _id: '873627854326',
                             },
                             t2: 'User John Doe with id (873627854326) was charged 100$',
-                            t1_compensation: 'User with id (873627854326) was removed'
+                            t1_compensation: 'User with id (873627854326) was removed',
                         });
                         expect(logger.error).to.have.callCount(2);
                         expect(logger.error).to.have.been.calledWithExactly(stepError);
@@ -174,7 +175,7 @@ describe('executer', () => {
                         expect(actionSpy2).to.have.been.calledBefore(actionSpy3);
                         expect(actionSpy3).to.have.been.calledBefore(compensationSpy2);
                         expect(compensationSpy2).to.have.been.calledBefore(compensationSpy1);
-                    })
+                    });
             },
         );
 
@@ -190,13 +191,13 @@ describe('executer', () => {
                         .that.equal('step failed');
                     expect(error.executionDetails).to.deep.equal({
                         t1: {
-                          email: 'john.doe@crowdanalyzer.com',
-                          name: 'John Doe',
-                          _id: '873627854326'
+                            email: 'john.doe@crowdanalyzer.com',
+                            name: 'John Doe',
+                            _id: '873627854326',
                         },
                         t2: 'User John Doe with id (873627854326) was charged 100$',
                         t2_compensation: 'User John Doe with id (873627854326) was refunded 100$',
-                        t1_compensation: 'User with id (873627854326) was removed'
+                        t1_compensation: 'User with id (873627854326) was removed',
                     });
                     expect(console.error).to.have.been.calledOnceWithExactly(error);
                 });
