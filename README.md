@@ -193,7 +193,7 @@ const run = async() => {
     return result;
 };
 
-run().then(console.log);
+run().catch(console.log);
 
 /** Output:
  *
@@ -205,16 +205,17 @@ run().then(console.log);
  *    userName: 'John Doe', userId: '873627854326', amount: 100 },
  *    step_id: 'task__charge_user',
  *    action: 'do'
- *  }
- *
- * // Results, including compensation step
- * {
+ *  },
+ * step_id: 'task__charge_user',
+ * action: 'do',
+ * executionDetails: {
  *     task__create_user: {
  *         email: 'john.doe@crowdanalyzer.com',
  *         name: 'John Doe',
- *         _id: '873627854326',
+ *         _id: '873627854326'
  *     },
  *     task__create_user_compensation: 'User with id (873627854326) was removed'
  * }
+ *}
 */
 ```
