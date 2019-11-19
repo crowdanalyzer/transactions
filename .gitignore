@@ -118,7 +118,7 @@ typings/
 # vuepress build output
 .vuepress/dist
 
-# babel build output 
+# babel build output
 .babel/dist
 
 # Serverless directories

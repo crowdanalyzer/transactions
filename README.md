@@ -1,13 +1,17 @@
-<h1 align="center">Transactions</h1>
-
+<h1 align="center">Transactions Processing Library</h1>
 <p align="center">
-  Transactions processing library
-</p>
-
-<p align="center">
-  <a href="https://circleci.com/gh/crowdanalyzer/transactions/tree/master">
-    <img alt="CircleCI" src="https://circleci.com/gh/crowdanalyzer/transactions/tree/master.svg?style=shield&circle-token=79d3b9ba3c54691eb05b833d9cc63e151bd77cc8">
-  </a>
+   <a href="https://circleci.com/gh/crowdanalyzer/transactions/tree/master">
+        <img alt="CircleCI" src="https://circleci.com/gh/crowdanalyzer/transactions/tree/master.svg?style=shield&circle-token=79d3b9ba3c54691eb05b833d9cc63e151bd77cc8">
+    </a>
+   <a href="https://dependabot.com">
+        <img alt="Dependabot" src="https://api.dependabot.com/badges/status?host=github&repo=crowdanalyzer/transactions&identifier=193368178">
+    </a>
+   <a href="https://github.com/semantic-release/semantic-release">
+        <img alt="semantic release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+    </a>
+   <a href="https://www.npmjs.com/package/@crowdanalyzer/transactions">
+        <img alt="npm" src="https://img.shields.io/badge/npm-latest-blue">
+    </a>
 </p>
 
 # Installation
@@ -189,7 +193,7 @@ const run = async() => {
     return result;
 };
 
-run().then(console.log);
+run().catch(console.log);
 
 /** Output:
  *
@@ -201,16 +205,17 @@ run().then(console.log);
  *    userName: 'John Doe', userId: '873627854326', amount: 100 },
  *    step_id: 'task__charge_user',
  *    action: 'do'
- *  }
- *
- * // Results, including compensation step
- * {
+ *  },
+ * step_id: 'task__charge_user',
+ * action: 'do',
+ * executionDetails: {
  *     task__create_user: {
  *         email: 'john.doe@crowdanalyzer.com',
  *         name: 'John Doe',
- *         _id: '873627854326',
+ *         _id: '873627854326'
  *     },
  *     task__create_user_compensation: 'User with id (873627854326) was removed'
  * }
+ *}
 */
 ```

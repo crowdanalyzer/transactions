@@ -9,7 +9,7 @@ const get = (obj, path) =>
         .reduce(
             (last, part) =>
                 'object' === typeof last && last.hasOwnProperty(part) ? last[part] : undefined,
-            obj
+            obj,
         );
 
 const map = (params = [], data) =>
@@ -44,7 +44,8 @@ module.exports = (logger = console) => {
                 Object.assign(error, { step_id: step.id, action: 'do' });
                 logger.error(error);
                 await executeCompensations(compensations, stepsResult);
-                break;
+                error.executionDetails = stepsResult;
+                throw error;
             }
         }
 
