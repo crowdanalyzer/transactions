@@ -14,6 +14,7 @@
     </a>
 </p>
 
+## Installation
 ```
 npm i @crowdanalyzer/transactions
 ```
