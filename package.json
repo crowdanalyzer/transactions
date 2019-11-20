@@ -32,7 +32,7 @@
     "docker-shutdown": "docker-compose down --rmi local -v",
     "docker": "docker-compose up -d --build && docker exec -it ${PWD##*/} bash",
     "debugger": "nodemon --watch . --exec 'npm run test -- --inspect-brk=0.0.0.0:9229 || true'",
-    "test": "mocha ./test/ --recursive --timeout=60000 --exit",
+    "test": "mocha ./test/",
     "coverage": "nyc npm run test",
     "lint": "eslint ./src/ ./test/ ./index.js",
     "depcheck": "npm-check --ignore semantic-release --ignore @semantic-release/*"
@@ -56,10 +56,11 @@
   "dependencies": {},
   "crowdanalyzer": {
     "template": {
-      "name": "library-template-v2.2"
+      "type": "library",
+      "v": "template-v2.3"
     },
     "sia": {
-      "version": "0.4.1"
+      "v": "0.6.0-dev.3"
     }
   }
 }
