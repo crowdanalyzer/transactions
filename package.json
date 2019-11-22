@@ -46,7 +46,7 @@
     "eslint-config-crowdanalyzer": "^1.4.1",
     "lodash": "^4.17.15",
     "mocha": "^6.2.1",
-    "nodemon": "^2.0.0",
+    "nodemon": "^2.0.1",
     "npm-check": "^5.9.0",
     "nyc": "^14.1.1",
     "semantic-release": "^15.13.31",
