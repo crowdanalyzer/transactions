@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/crowdanalyzer/transactions.git"
   },
-  "engine": {
+  "engines": {
     "node": ">=12.0.0",
     "npm": ">=6.0.0"
   },
@@ -57,10 +57,10 @@
   "crowdanalyzer": {
     "template": {
       "type": "library",
-      "v": "template-v2.3"
+      "v": "template-v2.4"
     },
     "sia": {
-      "v": "0.6.0-dev.3"
+      "v": "0.7.0"
     }
   }
 }
