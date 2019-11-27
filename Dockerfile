@@ -8,7 +8,6 @@ if [ -d /home/node/deps/node_modules ]; then \n\
     mv /home/node/deps/node_modules /home/node/app/node_modules \n\
     mv /home/node/deps/package-lock.json /home/node/app/package-lock.json \n\
 fi \n\
-
 npm completion >> $HOME/.bashrc \n\
 source $HOME/.bashrc \n\
 echo "Ready to start" \n\
