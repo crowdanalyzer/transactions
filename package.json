@@ -57,10 +57,10 @@
   "crowdanalyzer": {
     "template": {
       "type": "library",
-      "v": "template-v2.4"
+      "v": "template-v2.5"
     },
     "sia": {
-      "v": "0.7.0"
+      "v": "0.8.1-dev.1"
     }
   }
 }
