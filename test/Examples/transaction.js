@@ -5,7 +5,7 @@ module.exports = [
         id: 't1',
         name: 'Create user',
         do: {
-            func: user => 
+            func: user =>
                 Promise.resolve(Object.assign(user, { _id: '873627854326' })),
             params: [
                 {
@@ -15,7 +15,7 @@ module.exports = [
             ],
         },
         undo: {
-            func: userId => 
+            func: userId =>
                 Promise.resolve(`User with id (${userId}) was removed`),
             params: ['$t1._id'],
         },
@@ -48,7 +48,7 @@ module.exports = [
         id: 't4',
         name: 'Save transaction',
         do: {
-            func: chargingResponse => 
+            func: chargingResponse =>
                 Promise.resolve(`Saved transaction: ${chargingResponse}`),
             params: ['$t2'],
         },

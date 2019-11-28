@@ -43,7 +43,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^6.7.1",
-    "eslint-config-crowdanalyzer": "^1.4.1",
+    "eslint-config-crowdanalyzer": "^2.0.0",
     "lodash": "^4.17.15",
     "mocha": "^6.2.1",
     "nodemon": "^2.0.1",
@@ -57,10 +57,10 @@
   "crowdanalyzer": {
     "template": {
       "type": "library",
-      "v": "template-v2.4"
+      "v": "template-v2.5"
     },
     "sia": {
-      "v": "0.7.0"
+      "v": "0.8.1-dev.1"
     }
   }
 }
