@@ -22,6 +22,7 @@ const map = (params = [], data) =>
         return param;
     });
 
+/* eslint-disable no-await-in-loop */
 module.exports = (logger = console) => {
     /**
      * @description execute tasks sequentially and if any of them failed
@@ -68,3 +69,4 @@ module.exports = (logger = console) => {
 
     return execute;
 };
+/* eslint-enable no-await-in-loop */
