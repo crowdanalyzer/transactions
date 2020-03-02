@@ -34,8 +34,7 @@
     "debugger": "nodemon --watch . --exec 'npm run test -- --inspect-brk=0.0.0.0:9229 || true'",
     "test": "mocha ./test/",
     "coverage": "nyc npm run test",
-    "lint": "eslint ./src/ ./test/ ./index.js",
-    "depcheck": "npm-check --ignore semantic-release --ignore @semantic-release/*"
+    "lint": "eslint ./src/ ./test/ ./index.js"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.0",
@@ -47,7 +46,6 @@
     "lodash": "^4.17.15",
     "mocha": "^7.1.0",
     "nodemon": "^2.0.2",
-    "npm-check": "^5.9.0",
     "nyc": "^15.0.0",
     "semantic-release": "^17.0.4",
     "sinon": "^9.0.0",
