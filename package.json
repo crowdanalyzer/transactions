@@ -47,7 +47,7 @@
     "lodash": "^4.17.15",
     "mocha": "^7.1.0",
     "nodemon": "^2.0.2",
-    "npm-check": "^5.9.0",
+    "npm-check": "^5.9.2",
     "nyc": "^15.0.0",
     "semantic-release": "^17.0.4",
     "sinon": "^9.0.0",
