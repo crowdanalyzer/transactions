@@ -195,6 +195,8 @@ describe('executer', () => {
                 t2_compensation: 'User John Doe with id (873627854326) was refunded 100$',
                 t1_compensation: 'User with id (873627854326) was removed',
             });
+
+            // eslint-disable-next-line no-console
             expect(console.error).to.have.been.calledOnceWithExactly(error);
         });
 
