@@ -42,7 +42,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^6.8.0",
-    "eslint-config-crowdanalyzer": "^3.0.0",
+    "eslint-config-crowdanalyzer": "^4.0.0",
     "lodash": "^4.17.15",
     "mocha": "^7.1.1",
     "nodemon": "^2.0.3",
